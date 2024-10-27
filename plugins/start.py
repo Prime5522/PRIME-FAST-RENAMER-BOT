@@ -57,7 +57,7 @@ async def start(client, message):
 async def send_doc(client, message):
     user_id = message.chat.id
     old = insert(int(user_id))
-
+        
     user_id = message.from_user.id    
     if FORCE_SUBS:
         try:
@@ -65,27 +65,37 @@ async def send_doc(client, message):
         except UserNotParticipant:
             _newus = find_one(message.from_user.id)
             user = _newus["usertype"]
-
-            # ছবির URL যুক্ত করুন
-            photo_url = "https://envs.sh/AHX.jpg"  # ছবির URL এখানে যুক্ত করুন
-
-            # ছবিটি পাঠানোর কোড
-            await client.send_photo(
-                chat_id=user_id,
-                photo=photo_url,
-                caption="<b>Hello Dear \n\nYou Need To Join In Upload Channel To Use Me\n\nKindly Please Join Channel</b>",
-                parse_mode="html"
-            )
-
-            await message.reply_text(
-                reply_markup=InlineKeyboardMarkup([
-                    [InlineKeyboardButton("🔺 Please Join Update Channel 🔺", url=f"https://t.me/{FORCE_SUBS}")]
-                ])
-            )
+            await message.reply_text("<b>Hello Dear \n\nYou Need To Join In Upload Channel To Use Me\n\nKindly Please Join Channel</b>",
+                                     reply_to_message_id=message.id,
+                                     reply_markup=InlineKeyboardMarkup([
+                                         [InlineKeyboardButton("🔺 Please Join Update Channel 🔺", url=f"https://t.me/{FORCE_SUBS}")]
+                                         ]))
             await client.send_message(LOG_CHANNEL, f"<b><u>New User Started The Bot</u></b> \n\n<b>User ID :</b> <code>{user_id}</code> \n<b>First Name :</b> {message.from_user.first_name} \n<b>Last Name :</b> {message.from_user.last_name} \n<b>User Name :</b> @{message.from_user.username} \n<b>User Mention :</b> {message.from_user.mention} \n<b>User Link :</b> <a href='tg://openmessage?user_id={user_id}'>Click Here</a> \n<b>User Plan :</b> {user}")
             return
+		
+    botdata(int(botid))
+    bot_data = find_one(int(botid))
+    prrename = bot_data['total_rename']
+    prsize = bot_data['total_size']
+    user_deta = find_one(user_id)
+    used_date = user_deta["date"]
+    buy_date = user_deta["prexdate"]
+    daily = user_deta["daily"]
+    user_type = user_deta["usertype"]
 
-    # বাকী কোড এখানে থাকবে
+    c_time = time.time()
+
+    if user_type == "Free":
+        LIMIT = 120
+    else:
+        LIMIT = 10
+    then = used_date + LIMIT
+    left = round(then - c_time)
+    conversion = datetime.timedelta(seconds=left)
+    ltime = str(conversion)
+    if left > 0:
+        await message.reply_text(f"<b>Sorry Dude I Am Not Only For You \n\nFlood Control Is Active So Please Wait For {ltime} </b>", reply_to_message_id=message.id)
+    else:
         # Forward a single message
         media = await client.get_messages(message.chat.id, message.id)
         file = media.document or media.video or media.audio
