@@ -69,14 +69,17 @@ async def send_doc(client, message):
             # এখানে ছবির URL যুক্ত করুন
             photo_url = "https://envs.sh/AHX.jpg"  # ছবির URL এখানে যুক্ত করুন
 
-            # ছবিটি পাঠানোর কোড
-            await client.send_photo(chat_id=user_id, photo=photo_url)
+            # ছবিটি এবং টেক্সট একসাথে পাঠানোর কোড (রিপ্লাই বন্ধ)
+            await client.send_photo(
+                chat_id=user_id, 
+                photo=photo_url,
+                caption="<b>Hello Dear \n\nYou Need To Join In Upload Channel To Use Me\n\nKindly Please Join Channel</b>",
+                reply_markup=InlineKeyboardMarkup([
+                    [InlineKeyboardButton("🔺 Please Join Update Channel 🔺", url=f"https://t.me/{FORCE_SUBS}")]
+                ])
+            )
 
-            await message.reply_text("<b>Hello Dear \n\nYou Need To Join In Upload Channel To Use Me\n\nKindly Please Join Channel</b>",
-                                     reply_to_message_id=message.id,
-                                     reply_markup=InlineKeyboardMarkup([
-                                         [InlineKeyboardButton("🔺 Please Join Update Channel 🔺", url=f"https://t.me/{FORCE_SUBS}")]
-                                         ]))
+            # লগ চ্যানেলে বার্তা পাঠানোর কোড
             await client.send_message(LOG_CHANNEL, f"<b><u>New User Started The Bot</u></b> \n\n<b>User ID :</b> <code>{user_id}</code> \n<b>First Name :</b> {message.from_user.first_name} \n<b>Last Name :</b> {message.from_user.last_name} \n<b>User Name :</b> @{message.from_user.username} \n<b>User Mention :</b> {message.from_user.mention} \n<b>User Link :</b> <a href='tg://openmessage?user_id={user_id}'>Click Here</a> \n<b>User Plan :</b> {user}")
             return
         
