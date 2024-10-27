@@ -67,7 +67,7 @@ async def send_doc(client, message):
             user = _newus["usertype"]
 
             # এখানে ছবির URL যুক্ত করুন
-            photo_url = "YOUR_PHOTO_URL_HERE"  # ছবির URL এখানে যুক্ত করুন
+            photo_url = "https://envs.sh/AfJ.jpg"  # ছবির URL এখানে যুক্ত করুন
 
             # ছবিটি এবং নতুন ক্যাপশন সহ টেক্সট পাঠানোর কোড
             await client.send_photo(
