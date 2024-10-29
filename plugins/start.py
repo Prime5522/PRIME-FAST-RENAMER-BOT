@@ -21,7 +21,6 @@ botid = token.split(':')[0]
 
 @Client.on_message(filters.private & filters.command(["start"]))
 async def start(client, message):
-    await message.react(emoji="🔥", big=True)
     user_id = message.chat.id
     old = insert(int(user_id))
     
@@ -37,11 +36,20 @@ async def start(client, message):
     text = f"""{message.from_user.mention} \nɪ  ᴀᴍ  ᴀɴ  ᴀᴅᴠᴀɴᴄᴇ  ꜰɪʟᴇ  ʀᴇɴᴀᴍᴇʀ  ᴀɴᴅ  ᴄᴏɴᴠᴇʀᴛᴇʀ  ʙᴏᴛ  ᴡɪᴛʜ  ᴘᴇʀᴍᴀɴᴇɴᴛ  ᴀɴᴅ  ᴄᴜsᴛᴏᴍ  ᴛʜᴜᴍʙɴᴀɪʟ  sᴜᴘᴘᴏʀᴛ.\n\nᴊᴜsᴛ  sᴇɴᴅ  ᴍᴇ  ᴀɴʏ  ᴠɪᴅᴇᴏ  ᴏʀ ᴅᴏᴄᴜᴍᴇɴᴛ !!\n<blockquote>🌿 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : <a href="https://t.me/Prime_Botz">𝐏𝐑𝐈𝐌𝐄 𝐁𝐎𝐓𝐳 🔥</a></blockquote></b>"""
     
     button = InlineKeyboardMarkup([
-        [InlineKeyboardButton("📢 Updates", url="https://t.me/Prime_botz"),
-        InlineKeyboardButton("💬 Support", url="https://telegram.me/Prime_Admin_Support_ProBot")],
-        [InlineKeyboardButton("🛠️ Help", callback_data='help'),
-        InlineKeyboardButton("❤️‍🩹 About", callback_data='about')],
-        [InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url="https://telegram.me/Prime_Nayem")]
+    [
+        InlineKeyboardButton("📢 Updates", url="https://t.me/Prime_botz"),
+        InlineKeyboardButton("💬 Support", url="https://telegram.me/Prime_Admin_Support_ProBot")
+    ],
+    [
+        InlineKeyboardButton("🛠️ Help", callback_data='help'),
+        InlineKeyboardButton("❤️‍🩹 About", callback_data='about')
+    ],
+    [
+        InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url="https://telegram.me/Prime_Nayem")
+    ],
+    [
+        InlineKeyboardButton("🌟 Take Subscription To Upload 4GB Files 🌟", callback_data="upgrade")
+    ]
         ])
     
     await message.reply_photo(
