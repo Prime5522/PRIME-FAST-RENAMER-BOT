@@ -1,4 +1,4 @@
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ForceReply
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram import Client, filters
 
 @Client.on_callback_query(filters.regex('upgrade'))
@@ -28,7 +28,7 @@ Payment Details:
 𝗖𝗢𝗡𝗡𝗘𝗖𝗧 𝗔𝗗𝗠𝗜𝗡 ➠ <a href="https://t.me/Prime_Admin_Support_ProBot">𝐌𝐑.𝐏𝐑𝐈𝐌𝐄</a> 
 👇(Admin)👇Send Payment Receipt 🧾 Screenshot"""
 
-    keybord = InlineKeyboardMarkup([
+    keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("🦋 Admin", url="https://t.me/Prime_Admin_Support_BOT"),
          InlineKeyboardButton("✖️ Cancel", callback_data="cancel")]
     ])
@@ -36,25 +36,25 @@ Payment Details:
     await update.message.reply_photo(
         photo=photo_url,
         caption=text,
-        reply_markup=keybord,
+        reply_markup=keyboard,
         parse_mode="html"
     )
 
 @Client.on_message(filters.private & filters.command(["upgrade"]))
 async def upgradecm(bot, message):
-    text = """**Free Plan User**
+    text = """<b>Free Plan User</b>
 Daily Upload limit 5GB
 Price 0
 
-**🪙 Basic**
+<b>🪙 Basic</b>
 Daily Upload limit 20GB
 Price 50₹ /🌎 0.59$ per Month
 
-**⚡ Standard**
+<b>⚡ Standard</b>
 Daily Upload limit 50GB
 Price 100₹ /🌎 1.19$ per Month
 
-**💎 Pro**
+<b>💎 Pro</b>
 Daily Upload limit 100GB
 Price 150₹ /🌎 2.16$ per Month
 
@@ -66,14 +66,14 @@ Payment Details:
 𝗖𝗢𝗡𝗡𝗘𝗖𝗧 𝗔𝗗𝗠𝗜𝗡 ➠ <a href="https://t.me/Prime_Admin_Support_ProBot">𝐌𝐑.𝐏𝐑𝐈𝐌𝐄</a> 
 👇(Admin)👇Send Payment Receipt 🧾 Screenshot"""
 
-    keybord = InlineKeyboardMarkup([
+    keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("🦋 Admin", url="https://t.me/Prime_Admin_Support_BOT"),
          InlineKeyboardButton("✖️ Cancel", callback_data="cancel")]
     ])
 
     await message.reply_text(
         text=text,
-        reply_markup=keybord,
+        reply_markup=keyboard,
         parse_mode="html",
         disable_web_page_preview=True,
         quote=True
