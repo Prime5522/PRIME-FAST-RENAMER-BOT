@@ -17,20 +17,20 @@ botid = token.split(':')[0]
 
 
 
-
-
 @Client.on_message(filters.private & filters.command(["start"]))
 async def start(client, message):
-    await message.react(emoji="🔥", big=True)
-    except Exception as e:
-        print(f"Error reacting to message: {e}")  # এই লাইনটি এড করুন
-    user_id = message.chat.id
-    old = insert(int(user_id))
-    
     try:
-        id = message.text.split(' ')[1]
+        await message.react(emoji="🔥", big=True)  # 🔥 ইমোজি দিয়ে রিঅ্যাক্ট করা হবে
+    except Exception as e:
+        print(f"Error reacting to message: {e}")  # এখানে ত্রুটি মুদ্রণ করা হবে
+
+    user_id = message.chat.id  # ব্যবহারকারীর ID পাওয়া হচ্ছে
+    old = insert(int(user_id))  # ব্যবহারকারীর ID ইনসার্ট করা হচ্ছে
+
+    try:
+        id = message.text.split(' ')[1]  # মেসেজের টেক্সট থেকে ID বের করা হচ্ছে
     except IndexError:
-        id = None
+        id = None  # যদি ID না পাওয়া যায় তবে None সেট করা হবে
 
     loading_sticker_message = await message.reply_sticker("CAACAgUAAxkBAAJ_9GcBHjuwkFd321YlOG4WOtdDCLv7AAIhFAACTiwJVPNa_9D21RH6NgQ")
     await asyncio.sleep(2)
