@@ -37,7 +37,7 @@ Payment Details:
         photo=photo_url,
         caption=text,
         reply_markup=keyboard,
-        parse_mode="html"
+        parse_mode="html"  # এটি সঠিক মোডে রাখতে হবে
     )
 
 @Client.on_message(filters.private & filters.command(["upgrade"]))
@@ -74,7 +74,7 @@ Payment Details:
     await message.reply_text(
         text=text,
         reply_markup=keyboard,
-        parse_mode="html",
+        parse_mode="html",  # এটি সঠিক মোডে রাখতে হবে
         disable_web_page_preview=True,
         quote=True
     )
