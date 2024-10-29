@@ -5,7 +5,8 @@ from pyrogram import Client , filters
 
 
 @Client.on_callback_query(filters.regex('upgrade'))
-async def upgrade(bot,update):
+async def upgrade(bot, update):
+    photo_url = "https://envs.sh/AR9.jpg"  # এখানে আপনার ছবির লিংক দিন
     text = """<b>Free Plan User</b>
 Daily Upload limit 5GB
 Price 0
@@ -29,14 +30,19 @@ Payment Details:
 যদি বিকাশ বা 𝗤𝗥 কোড ছাড়া অথবা অন্য কিছু মাধ্যমে পেমেন্ট করতে চাইলে অথবা আরো কিছু জানার থাকলে 
 𝗖𝗢𝗡𝗡𝗘𝗖𝗧 𝗔𝗗𝗠𝗜𝗡 ➠ <a href="https://t.me/Prime_Admin_Support_ProBot">𝐌𝐑.𝐏𝐑𝐈𝐌𝐄</a> 
 👇(Admin)👇Send Payment Receipt 🧾 Screenshot"""
-    
+
     keybord = InlineKeyboardMarkup([
-        [InlineKeyboardButton("🦋 Admin", url = "https://t.me/Prime_Admin_Support_BOT"),
-        InlineKeyboardButton("✖️ Cancel", callback_data="cancel")]
-        ])
-    
-    await update.message.edit(text = text,reply_markup = keybord, disable_web_page_preview=True)
-    
+        [InlineKeyboardButton("🦋 Admin", url="https://t.me/Prime_Admin_Support_BOT"),
+         InlineKeyboardButton("✖️ Cancel", callback_data="cancel")]
+    ])
+
+    await update.message.reply_photo(
+        photo=photo_url,
+        caption=text,
+        reply_markup=keybord,
+        parse_mode="html",
+        disable_web_page_preview=True
+    )
     
 
 @Client.on_message(filters.private & filters.command(["upgrade"]))
