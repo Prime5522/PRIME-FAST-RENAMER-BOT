@@ -22,6 +22,8 @@ botid = token.split(':')[0]
 @Client.on_message(filters.private & filters.command(["start"]))
 async def start(client, message):
     await message.react(emoji="🔥", big=True)
+    except Exception as e:
+        print(f"Error reacting to message: {e}")  # এই লাইনটি এড করুন
     user_id = message.chat.id
     old = insert(int(user_id))
     
