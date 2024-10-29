@@ -50,7 +50,7 @@ async def start(client, message):
     [
         InlineKeyboardButton("🌟 Take Subscription To Upload 4GB Files 🌟", callback_data="upgrade")
     ]
-        ])
+])
     
     await message.reply_photo(
         photo=START_PIC,
