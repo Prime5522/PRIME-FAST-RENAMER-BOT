@@ -41,6 +41,7 @@ async def start(client, message):
         [InlineKeyboardButton("🛠️ Help", callback_data='help'),
         InlineKeyboardButton("❤️‍🩹 About", callback_data='about')],
         [InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url="https://telegram.me/Prime_Nayem")]
+        [InlineKeyboardButton("🌟Take Subscription To Upload 4GB Files🌟", callback_data="upgrade")]
         ])
     
     await message.reply_photo(
