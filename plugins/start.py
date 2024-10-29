@@ -21,7 +21,7 @@ botid = token.split(':')[0]
 
 @Client.on_message(filters.private & filters.command(["start"]))
 async def start(client, message):
-    await message.react(emoji="❤️‍🔥", big=True)
+    await message.react(emoji="🔥", big=True)
     user_id = message.chat.id
     old = insert(int(user_id))
     
