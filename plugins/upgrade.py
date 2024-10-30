@@ -26,54 +26,57 @@ Payment Details:
 যদি বিকাশ বা 𝗤𝗥 কোড ছাড়া অথবা অন্য কিছু মাধ্যমে পেমেন্ট করতে চাইলে অথবা আরো কিছু জানার থাকলে 
 𝗖𝗢𝗡𝗡𝗘𝗖𝗧 𝗔𝗗𝗠𝗜𝗡 ➠ <a href="https://t.me/Prime_Admin_Support_ProBot">𝐌𝐑.𝐏𝐑𝐈𝐌𝐄</a> \n\n
 👇( 𝗔𝗗𝗠𝗜𝗡 )👇Send Payment Receipt 🧾 Screenshot"""
-
-    keybord = InlineKeyboardMarkup([
+    
+    keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("🦋 Admin", url="https://t.me/Prime_Admin_Support_BOT"),
          InlineKeyboardButton("✖️ Cancel", callback_data="cancel")]
     ])
-
-    media = InputMediaPhoto(media="https://envs.sh/AR9.jpg", caption=text, parse_mode="html")
-    await bot.send_media_group(
+    
+    # Sending the message with an image to the user in private chat
+    await bot.send_photo(
         chat_id=update.message.chat.id,
-        media=[media],
-        reply_markup=keybord,
+        photo="https://envs.sh/AR9.jpg",
+        caption=text,
+        reply_markup=keyboard,
         disable_web_page_preview=True
     )
 
 @Client.on_message(filters.private & filters.command(["upgrade"]))
 async def upgradecm(bot, message):
     text = """**Free Plan User**
-Daily  Upload limit 5GB
+Daily Upload limit 5GB
 Price 0
 
 **🪙 Basic**
-Daily  Upload  limit 20GB
-Price 50₹  /🌎 0.59$  per Month
+Daily Upload limit 20GB
+Price 50₹ /🌎 0.59$ per Month
 
 **⚡ Standard**
 Daily Upload limit 50GB
-Price 100₹ /🌎 1.19$  per Month
+Price 100₹ /🌎 1.19$ per Month
 
 **💎 Pro**
 Daily Upload limit 100GB
-Price 150₹  /🌎 2.16$  per Month
+Price 150₹ /🌎 2.16$ per Month
 
 Payment Details :-
-<b>➜ <a href="https://envs.sh/AR9.jpg">Click Here To Scan</a></b>
+<b>➜ <a href="https://envs.sh/AR9.jpg">Click Here To Scan</a>
 
-💵 𝗔𝗡𝗬 𝗖𝗢𝗨𝗡𝗧𝗥𝗬 𝗔𝗟𝗟 𝗣𝗔𝗬𝗠𝗘𝗡𝗧 𝗠𝗘𝗧𝗛𝗢𝗗 𝗔𝗩𝗔𝗜𝗟𝗔𝗕𝗟𝗘. যদি বিকাশ বা 𝗤𝗥 কোড ছাড়া অথবা অন্য কিছু মাধ্যমে
- পেমেন্ট করতে চাইলে অথবা আরো কিছু জানার থাকলে
-𝗖𝗢𝗡𝗡𝗘𝗖𝗧 𝗔𝗗𝗠𝗜𝗡 ➠ <a href="https://t.me/Prime_Admin_Support_ProBot">𝐌𝐑.𝐏𝐑𝐈𝐌𝐄</a> \n\n👇(Admin)👇Send Payment Receipt 🧾 Screenshot"""
+💵 𝗔𝗡𝗬 𝗖𝗢𝗨𝗡𝗧𝗥𝗬 𝗔𝗟𝗟 𝗣𝗔𝗬𝗠𝗘𝗡𝗧 𝗠𝗘𝗧𝗛𝗢𝗗 𝗔𝗩𝗔𝗜𝗟𝗔𝗕𝗟𝗘. 
+যদি বিকাশ বা 𝗤𝗥 কোড ছাড়া অথবা অন্য কিছু মাধ্যমে পেমেন্ট করতে চাইলে অথবা আরো কিছু জানার থাকলে 
+𝗖𝗢𝗡𝗡𝗘𝗖𝗧 𝗔𝗗𝗠𝗜𝗡 ➠ <a href="https://t.me/Prime_Admin_Support_ProBot">𝐌𝐑.𝐏𝐑𝐈𝐌𝐄</a> \n\n
+👇(Admin)👇Send Payment Receipt 🧾 Screenshot"""
 
-    keybord = InlineKeyboardMarkup([
+    keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("🦋 Admin", url="https://t.me/Prime_Admin_Support_BOT"),
          InlineKeyboardButton("✖️ Cancel", callback_data="cancel")]
     ])
-
-    media = InputMediaPhoto(media="https://envs.sh/AR9.jpg", caption=text, parse_mode="html")
-    await bot.send_media_group(
+    
+    # Sending the message with an image to the user in private chat
+    await bot.send_photo(
         chat_id=message.chat.id,
-        media=[media],
-        reply_markup=keybord,
+        photo="https://envs.sh/AR9.jpg",
+        caption=text,
+        reply_markup=keyboard,
         disable_web_page_preview=True
     )
