@@ -1,4 +1,4 @@
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram import Client, filters
 
 @Client.on_callback_query(filters.regex('upgrade'))
@@ -32,13 +32,11 @@ Payment Details:
          InlineKeyboardButton("✖️ Cancel", callback_data="cancel")]
     ])
     
-    # Sending the message with an image to the user in private chat
     await bot.send_photo(
         chat_id=update.message.chat.id,
         photo="https://envs.sh/AR9.jpg",
         caption=text,
-        reply_markup=keyboard,
-        disable_web_page_preview=True
+        reply_markup=keyboard
     )
 
 @Client.on_message(filters.private & filters.command(["upgrade"]))
@@ -72,11 +70,9 @@ Payment Details :-
          InlineKeyboardButton("✖️ Cancel", callback_data="cancel")]
     ])
     
-    # Sending the message with an image to the user in private chat
     await bot.send_photo(
         chat_id=message.chat.id,
         photo="https://envs.sh/AR9.jpg",
         caption=text,
-        reply_markup=keyboard,
-        disable_web_page_preview=True
+        reply_markup=keyboard
     )
