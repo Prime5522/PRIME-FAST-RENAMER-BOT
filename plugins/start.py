@@ -5,19 +5,15 @@ from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 from pyrogram import Client, filters, enums
 from pyrogram.types import (InlineKeyboardButton, InlineKeyboardMarkup)
 from helper.progress import humanbytes
-from helper.database import botdata, find_one, total_user
-from helper.database import insert, find_one, used_limit, usertype, uploadlimit, addpredata, total_rename, total_size
+from helper.database import (botdata, find_one, total_user, insert, 
+                              used_limit, usertype, uploadlimit, 
+                              addpredata, total_rename, total_size, daily as daily_)
 from pyrogram.file_id import FileId
-from helper.database import daily as daily_
 from helper.date import check_expi
 from config import *
 
 token = BOT_TOKEN
 botid = token.split(':')[0]
-
-
-
-
 
 @Client.on_message(filters.private & filters.command(["start"]))
 async def start(client, message):
@@ -33,34 +29,32 @@ async def start(client, message):
     await asyncio.sleep(2)
     await loading_sticker_message.delete()
     
-    text = f"""{message.from_user.mention} \nɪ  ᴀᴍ  ᴀɴ  ᴀᴅᴠᴀɴᴄᴇ  ꜰɪʟᴇ  ʀᴇɴᴀᴍᴇʀ  ᴀɴᴅ  ᴄᴏɴᴠᴇʀᴛᴇʀ  ʙᴏᴛ  ᴡɪᴛʜ  ᴘᴇʀᴍᴀɴᴇɴᴛ  ᴀɴᴅ  ᴄᴜsᴛᴏᴍ  ᴛʜᴜᴍʙɴᴀɪʟ  sᴜᴘᴘᴏʀᴛ.\n\nᴊᴜsᴛ  sᴇɴᴅ  ᴍᴇ  ᴀɴʏ  ᴠɪᴅᴇᴏ  ᴏʀ ᴅᴏᴄᴜᴍᴇɴᴛ !!\n<blockquote>🌿 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : <a href="https://t.me/Prime_Botz">𝐏𝐑𝐈𝐌𝐄 𝐁𝐎𝐓𝐳 🔥</a></blockquote></b>"""
+    text = f"""{message.from_user.mention} \nɪ  ᴀᴍ  ᴀɴ  ᴀᴅᴠᴀɴᴄᴇ  ꜰɪʟᴇ  ʀᴇɴᴀᴍᴇʀ  ᴀɴᴅ  ᴄᴏɴᴠᴇʀᴛᴇʀ  ʙᴏᴛ  ᴡɪᴛʜ  ᴘᴇʀᴍᴀɴᴇɴᴛ  ᴀɴᴅ  ᴄᴜsᴛᴏᴍ  ᴛʜᴜᴍʙɴᴀɪʟ  sᴜᴘᴘᴏʀᴛ.\n\nᴊᴜsᴛ  sᴇɴᴅ  ᴍᴇ  ᴀɴʏ  ᴠɪᴅᴇᴏ ᴏʀ ᴅᴏᴄᴜᴍᴇɴᴛ !!\n<blockquote>🌿 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : <a href="https://t.me/Prime_Botz">𝐏𝐑𝐈𝐌𝐄 𝐁𝐎𝐓𝐳 🔥</a></blockquote></b>"""
     
     button = InlineKeyboardMarkup([
-    [
-        InlineKeyboardButton("📢 Updates", url="https://t.me/Prime_botz"),
-        InlineKeyboardButton("💬 Support", url="https://telegram.me/Prime_Admin_Support_ProBot")
-    ],
-    [
-        InlineKeyboardButton("🛠️ Help", callback_data='help'),
-        InlineKeyboardButton("❤️‍🩹 About", callback_data='about')
-    ],
-    [
-        InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url="https://telegram.me/Prime_Nayem")
-    ],
-    [
-        InlineKeyboardButton("🌟 Take Subscription To Rename 4GB Files 🌟", callback_data="upgrade")
-    ]
-])
+        [
+            InlineKeyboardButton("📢 Updates", url="https://t.me/Prime_botz"),
+            InlineKeyboardButton("💬 Support", url="https://telegram.me/Prime_Admin_Support_ProBot")
+        ],
+        [
+            InlineKeyboardButton("🛠️ Help", callback_data='help'),
+            InlineKeyboardButton("❤️‍🩹 About", callback_data='about')
+        ],
+        [
+            InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url="https://telegram.me/Prime_Nayem")
+        ],
+        [
+            InlineKeyboardButton("🌟 Take Subscription To Rename 4GB Files 🌟", callback_data="upgrade")
+        ]
+    ])
     
     await message.reply_photo(
         photo=START_PIC,
         caption=text,
         reply_markup=button,
         quote=True
-        )
+    )
     return    
-
-
 
 @Client.on_message((filters.private & (filters.document | filters.audio | filters.video)) | filters.channel & (filters.document | filters.audio | filters.video))
 async def send_doc(client, message):
@@ -75,10 +69,9 @@ async def send_doc(client, message):
             _newus = find_one(message.from_user.id)
             user = _newus["usertype"]
 
-            # এখানে ছবির URL যুক্ত করুন
-            photo_url = "https://envs.sh/AfJ.jpg"  # ছবির URL এখানে যুক্ত করুন
+            # ছবি URL
+            photo_url = "https://envs.sh/AfJ.jpg"  
 
-            # ছবিটি এবং নতুন ক্যাপশন সহ টেক্সট পাঠানোর কোড
             await client.send_photo(
                 chat_id=user_id, 
                 photo=photo_url,
@@ -88,7 +81,7 @@ async def send_doc(client, message):
                 ])
             )
 
-            # লগ চ্যানেলে বার্তা পাঠানোর কোড
+            # লগ চ্যানেলে বার্তা পাঠানো
             await client.send_message(LOG_CHANNEL, f"<b><u>New User Started The Bot</u></b> \n\n<b>User ID :</b> <code>{user_id}</code> \n<b>First Name :</b> {message.from_user.first_name} \n<b>Last Name :</b> {message.from_user.last_name} \n<b>User Name :</b> @{message.from_user.username} \n<b>User Mention :</b> {message.from_user.mention} \n<b>User Link :</b> <a href='tg://openmessage?user_id={user_id}'>Click Here</a> \n<b>User Plan :</b> {user}")
             return
         
@@ -104,10 +97,7 @@ async def send_doc(client, message):
 
     c_time = time.time()
 
-    if user_type == "Free":
-        LIMIT = 120
-    else:
-        LIMIT = 10
+    LIMIT = 120 if user_type == "Free" else 10
     then = used_date + LIMIT
     left = round(then - c_time)
     conversion = datetime.timedelta(seconds=left)
@@ -116,8 +106,6 @@ async def send_doc(client, message):
     if left > 0:
         await message.reply_text(f"<b>Sorry Dude I Am Not Only For You \n\nFlood Control Is Active So Please Wait For {ltime} </b>", reply_to_message_id=message.id)
     else:
-        # আপনার অন্যান্য কোড এখানে থাকবে
-        # Forward a single message
         media = await client.get_messages(message.chat.id, message.id)
         file = media.document or media.video or media.audio
         dcid = FileId.decode(file.file_id).dc_id
@@ -128,12 +116,14 @@ async def send_doc(client, message):
         used = used_["used_limit"]
         limit = used_["uploadlimit"]
         expi = daily - int(time.mktime(time.strptime(str(date_.today()), '%Y-%m-%d')))
+        
         if expi != 0:
             today = date_.today()
             pattern = '%Y-%m-%d'
             epcho = int(time.mktime(time.strptime(str(today), pattern)))
             daily_(message.from_user.id, epcho)
             used_limit(message.from_user.id, 0)
+
         remain = limit - used
         if remain < int(file.file_size):
             await message.reply_text(f"100% Of Daily {humanbytes(limit)} Data Quota Exhausted.\n\n<b>File Size Detected :</b> {humanbytes(file.file_size)}\n<b>Used Daily Limit :</b> {humanbytes(used)}\n\nYou Have Only <b>{humanbytes(remain)}</b> Left On Your Account.\n\nIf U Want To Rename Large File Upgrade Your Plan", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("💳 Upgrade", callback_data="upgrade")]]))
