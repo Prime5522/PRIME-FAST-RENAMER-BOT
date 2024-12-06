@@ -1,4 +1,4 @@
- from pyrogram.types import (InlineKeyboardButton, InlineKeyboardMarkup)
+from pyrogram.types import (InlineKeyboardButton, InlineKeyboardMarkup)
 from pyrogram import Client , filters
 from script import *
 from config import *
