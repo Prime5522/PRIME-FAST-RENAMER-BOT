@@ -42,10 +42,7 @@ async def start(client, message):
         ],
         [
             InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url="https://telegram.me/Prime_Nayem")
-        ],
-        [
-            InlineKeyboardButton("🌟 Take Subscription To Rename 4GB Files 🌟", callback_data="upgrade")
-        ]
+        ],        
     ])
     
     await message.reply_photo(
