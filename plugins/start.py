@@ -33,12 +33,12 @@ async def start(client, message):
     
     button = InlineKeyboardMarkup([
         [
-            InlineKeyboardButton("📢 Updates", url="https://t.me/Prime_botz"),
-            InlineKeyboardButton("💬 Support", url="https://telegram.me/Prime_Admin_Support_ProBot")
+            InlineKeyboardButton("📢 ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url="https://t.me/Prime_botz"),
+            InlineKeyboardButton("💬 ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ", url="https://t.me/Prime_botz_Support")
         ],
         [
-            InlineKeyboardButton("🛠️ Help", callback_data='help'),
-            InlineKeyboardButton("❤️‍🩹 About", callback_data='about')
+            InlineKeyboardButton("🛠️ Help 🛠️", callback_data='help'),
+            InlineKeyboardButton("❤️‍🩹 About ❤️‍🩹", callback_data='about')
         ],
         [
             InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url="https://telegram.me/Prime_Nayem")
@@ -82,7 +82,7 @@ async def send_doc(client, message):
             )
 
             # লগ চ্যানেলে বার্তা পাঠানো
-            await client.send_message(LOG_CHANNEL, f"<b><u>New User Started The Bot</u></b> \n\n<b>User ID :</b> <code>{user_id}</code> \n<b>First Name :</b> {message.from_user.first_name} \n<b>Last Name :</b> {message.from_user.last_name} \n<b>User Name :</b> @{message.from_user.username} \n<b>User Mention :</b> {message.from_user.mention} \n<b>User Link :</b> <a href='tg://openmessage?user_id={user_id}'>Click Here</a> \n<b>User Plan :</b> {user}")
+            await client.send_message(LOG_CHANNEL, f"<b><u>Fast Prime Renamer Bot\n New User Started The Bot</u></b> \n\n<b>User ID :</b> <code>{user_id}</code> \n<b>First Name :</b> {message.from_user.first_name} \n<b>Last Name :</b> {message.from_user.last_name} \n<b>User Name :</b> @{message.from_user.username} \n<b>User Mention :</b> {message.from_user.mention} \n<b>User Link :</b> <a href='tg://openmessage?user_id={user_id}'>Click Here</a> \n<b>User Plan :</b> {user}")
             return
         
     botdata(int(botid))
@@ -104,7 +104,7 @@ async def send_doc(client, message):
     ltime = str(conversion)
     
     if left > 0:
-        await message.reply_text(f"<b>Sorry Dude I Am Not Only For You \n\nFlood Control Is Active So Please Wait For {ltime} </b>", reply_to_message_id=message.id)
+        await message.reply_text(f"<b>Sorry Dude I Am Not Only For You \n\nFlood Control Is Active So Please Wait For {ltime} </b> Else you can update your plan For no waiting Click 👉 /upgrade", reply_to_message_id=message.id)
     else:
         media = await client.get_messages(message.chat.id, message.id)
         file = media.document or media.video or media.audio
