@@ -32,18 +32,33 @@ async def start(client, message):
     text = f"""{message.from_user.mention} \nɪ  ᴀᴍ  ᴀɴ  ᴀᴅᴠᴀɴᴄᴇ  ꜰɪʟᴇ  ʀᴇɴᴀᴍᴇʀ  ᴀɴᴅ  ᴄᴏɴᴠᴇʀᴛᴇʀ  ʙᴏᴛ  ᴡɪᴛʜ  ᴘᴇʀᴍᴀɴᴇɴᴛ  ᴀɴᴅ  ᴄᴜsᴛᴏᴍ  ᴛʜᴜᴍʙɴᴀɪʟ  sᴜᴘᴘᴏʀᴛ.\n\nᴊᴜsᴛ  sᴇɴᴅ  ᴍᴇ  ᴀɴʏ  ᴠɪᴅᴇᴏ ᴏʀ ᴅᴏᴄᴜᴍᴇɴᴛ !!\n<blockquote>🌿 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : <a href="https://t.me/Prime_Botz">ᴘʀɪᴍᴇ ʙᴏᴛᴢ 🔥</a></blockquote></b>"""
     
     button = InlineKeyboardMarkup([
-        [
-            InlineKeyboardButton("📢 ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url="https://t.me/Prime_botz"),
-            InlineKeyboardButton("💬 ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ", url="https://t.me/Prime_botz_Support")
-        ],
-        [
-            InlineKeyboardButton("🛠️ Help 🛠️", callback_data='help'),
-            InlineKeyboardButton("❤️‍🩹 About ❤️‍🩹", callback_data='about')
-        ],
-        [
-            InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url="https://telegram.me/Prime_Nayem")
-        ],        
-    ])
+    [
+        InlineKeyboardButton(
+            text="📢 ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ",
+            url="https://t.me/Prime_botz"
+        ),
+        InlineKeyboardButton(
+            text="💬 ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ",
+            url="https://t.me/Prime_botz_Support"
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            text="🛠️ Help 🛠️",
+            callback_data="help"
+        ),
+        InlineKeyboardButton(
+            text="❤️‍🩹 About ❤️‍🩹",
+            callback_data="about"
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            text="🧑‍💻 Developer 🧑‍💻",
+            url="https://telegram.me/Prime_Nayem"
+        )
+    ]
+])
     
     await message.reply_photo(
         photo=START_PIC,
